@@ -1,0 +1,19 @@
+{
+  "name": "wolfram-cli",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "wolf": "./wolf.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vladimyr",
+  "license": "MIT",
+  "dependencies": {
+    "wolfram-query": "latest",
+    "chalk": "^1.1.0",
+    "cli-table": "^0.3.1",
+    "minimist": "^1.1.1"
+  }
+}
