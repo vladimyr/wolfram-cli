@@ -18,6 +18,6 @@
     "minimist": "^1.1.1",
     "ora": "^0.3.0",
     "table": "^3.7.8",
-    "wolfram-query": "latest"
+    "wolfram-query": "vladimyr/wolfram-query"
   }
 }
