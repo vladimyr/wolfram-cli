@@ -1,10 +1,13 @@
 'use strict';
 
+const parseUrl = require('url').parse;
 const styles = require('./styles.js');
 const writeLine = require('./writeLine.js');
 const printSubpod = require('./printSubpod.js');
 
 function printLink(link, options) {
+  // Sanitize url by parsing it.
+  link.url = parseUrl(link.url).href;
   writeLine(`${ link.text }: ${ styles.link(link.url) }`, options.indent);
   writeLine();
 }
