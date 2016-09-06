@@ -10,13 +10,22 @@ function printMinput(output, minput) {
 }
 
 function printPlaintext(output, plaintext, options) {
+  // Skip empty plaintext sections.
+  if (plaintext.length <= 0) return;
+
   // Print single line of plaintext.
   if (plaintext.length === 1) {
     output.putText(plaintext[0].join(options.columnDelimiter));
     return;
   }
 
-  // Prepare table data.
+  // Print multiple lines of plaintext
+  if (plaintext[0].length !== plaintext[1].length) {
+    output.putText(plaintext.map(line => line.join('')).join('\n'));
+    return;
+  }
+
+  // Prepare plaintext table data.
   let data = plaintext.slice(0, plaintext.length - 1);
 
   let lastLine = plaintext[plaintext.length - 1];
