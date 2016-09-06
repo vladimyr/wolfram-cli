@@ -1,7 +1,10 @@
 {
   "name": "wolfram-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
+  "engines": {
+    "node": ">=4"
+  },
   "bin": {
     "wolf": "./wolf.js"
   },
@@ -11,9 +14,10 @@
   "author": "vladimyr",
   "license": "MIT",
   "dependencies": {
-    "wolfram-query": "latest",
     "chalk": "^1.1.0",
-    "cli-table": "^0.3.1",
-    "minimist": "^1.1.1"
+    "minimist": "^1.1.1",
+    "ora": "^0.3.0",
+    "table": "^3.7.8",
+    "wolfram-query": "latest"
   }
 }

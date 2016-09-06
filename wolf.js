@@ -2,26 +2,39 @@
 
 'use strict';
 
-var execQuery   = require('wolfram-query'),
-    printResult = require('./printer.js'),
-    argv        = require('minimist')(process.argv.slice(2));
+const query = require('wolfram-query');
+const chalk = require('chalk');
+const ora = require('ora');
+const print = require('./printer/print.js');
+const argv = require('minimist')(process.argv.slice(2));
 
-var input = argv._.join(' '),
-    opts  = {};
+let input = argv._.join(' ');
+let options = {};
+if (argv.xml) options.outputType = 'xml';
 
-if (argv.json)
-    opts.outputType = 'json';
-else if (argv.xml)
-    opts.outputType = 'xml';
+let spinner = ora(`Querying ${ chalk.bold('wolframalpha.com') }...`);
+spinner.start();
 
-if (process.env.WOLFRAM_APP_ID)
-    opts.appId = process.env.WOLFRAM_APP_ID;
+query(input, options)
+  .then(data => {
+    spinner.stop();
+    output(data);
+  })
+  .catch(err => {
+    spinner.stop();
+    throw err;
+  });
 
-execQuery(input, opts, function(err, data){
-    if (opts.outputType) {
-        console.log(data)
-        return;
-    }
-    
-    printResult(data);
-});
+function output(data) {
+  if (argv.json) {
+    console.log(JSON.stringify(data, null, 2));
+    return;
+  }
+
+  if (argv.xml) {
+    console.log(data.write());
+    return;
+  }
+
+  print(data);
+}
