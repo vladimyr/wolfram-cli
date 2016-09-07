@@ -21,7 +21,10 @@ function printPlaintext(output, plaintext, options) {
 
   // Print multiple lines of plaintext
   if (plaintext[0].length !== plaintext[1].length) {
-    output.putText(plaintext.map(line => line.join(options.columnDelimiter)).join('\n'));
+    output.putText(plaintext.filter(line => line.join(''))
+                            .map(line => line.filter(line => line).join(' '))
+                            .join('\n')
+                  );
     return;
   }
 
