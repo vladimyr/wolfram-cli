@@ -19,12 +19,6 @@ function printPlaintext(output, plaintext, options) {
     return;
   }
 
-  // Print multiple lines of plaintext
-  if (plaintext[0].length !== plaintext[1].length) {
-    output.putText(plaintext.map(line => line.join(' ')).join('\n'));
-    return;
-  }
-
   // Prepare plaintext table data.
   let data = plaintext.slice(0, plaintext.length - 1);
 
@@ -34,8 +28,9 @@ function printPlaintext(output, plaintext, options) {
   // Print table.
   let maxWidth = process.stdout.columns - options.indent;
   output.putText(makeTable(data, { maxWidth }));
+
+  // Print table footer.
   if (lastLine.length === 1) {
-    // Print text under table.
     output.putText(lastLine[0].replace(/…/g, '...'));
   }
 }
