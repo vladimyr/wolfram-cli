@@ -1,17 +1,13 @@
 'use strict';
 
-const table_ = require('table');
-const table = table_.default;
-const norc = table_.getBorderCharacters('norc');
+const { table, getBorderCharacters } = require('table');
+const norc = getBorderCharacters('norc');
 
-function maxColumnWidth(count, columns) {
-  columns = columns || process.stdout.columns;
+function maxColumnWidth(count, columns=process.stdout.columns) {
   return Math.floor((columns - (count * 3) - 1) / count);
 }
 
-function getColumnsConfig(table, options) {
-  options = options || {};
-
+function getColumnsConfig(table, options={}) {
   let columns = {};
 
   let row = table[0];
@@ -24,7 +20,7 @@ function getColumnsConfig(table, options) {
 
     columns[col] = {
       width: Math.min(contentWidth, maxColumnWidth(row.length, options.maxWidth)),
-      wrapWord: options.wordwrap || true
+      wrapWord: options.wordwrap !== false
     };
   });
   return columns;

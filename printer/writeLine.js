@@ -1,9 +1,7 @@
 'use strict';
 
-module.exports = function(data, indentSize){
-  data = data || '';
-
-  indentSize = Math.abs(indentSize) || 0;
+module.exports = function(data='', indentSize=0){
+  indentSize = Math.abs(indentSize);
   if (!indentSize) {
     console.log(data);
     return;

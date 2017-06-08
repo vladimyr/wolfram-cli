@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const styles = require('./styles.js');
 const writeLine = require('./writeLine.js');
 
-function printHead(result, options) {
+function printHead(result, options={}) {
   writeLine();
 
   if (!result.info.success) {

@@ -1,8 +1,8 @@
 'use strict';
 
 class StringBuffer {
-  constructor(str) {
-    this._buffer = str || '';
+  constructor(str='') {
+    this._buffer = str;
   }
 
   putText(str) {

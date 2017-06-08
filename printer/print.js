@@ -6,9 +6,8 @@ const printPod = require('./printPod.js');
 const INDENT_SIZE = 2;
 const COLUMN_DELIMITER = ' | ';
 
-function printResult(result, options) {
+function printResult(result, options={}) {
   // Setup defaults.
-  options = options || {};
   options.indent = options.indent || INDENT_SIZE;
   options.columnDelimiter = options.columnDelimiter || COLUMN_DELIMITER;
 

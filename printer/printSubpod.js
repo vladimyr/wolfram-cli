@@ -9,7 +9,7 @@ function printMinput(output, minput) {
   output.putText(styles.minput(` wlang> ${ minput } `));
 }
 
-function printPlaintext(output, plaintext, options) {
+function printPlaintext(output, plaintext, options={}) {
   // Skip empty plaintext sections.
   if (plaintext.length <= 0) return;
 
@@ -35,7 +35,7 @@ function printPlaintext(output, plaintext, options) {
   }
 }
 
-function printSubpod(subpod, options) {
+function printSubpod(subpod, options={}) {
   let plaintext = subpod.plaintext || [];
   let minput = subpod.minput;
 

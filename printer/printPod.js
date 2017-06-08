@@ -5,14 +5,14 @@ const styles = require('./styles.js');
 const writeLine = require('./writeLine.js');
 const printSubpod = require('./printSubpod.js');
 
-function printLink(link, options) {
+function printLink(link, options={}) {
   // Sanitize url by parsing it.
   link.url = parseUrl(link.url).href;
   writeLine(`${ link.text }: ${ styles.link(link.url) }`, options.indent);
   writeLine();
 }
 
-function printPod(pod, options) {
+function printPod(pod, options={}) {
   // Extract links and subpods.
   let subpods = pod.subpods || [];
   let links = pod.links || [];
